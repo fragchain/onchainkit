@@ -228,6 +228,7 @@ export type WalletAdvancedContextType = {
   >;
   animations: {
     container: string;
+    mobileContainer: string;
     content: string;
   };
 };
