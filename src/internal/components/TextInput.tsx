@@ -19,6 +19,8 @@ type TextInputReact = {
   setValue?: (s: string) => void;
   value: string;
   inputValidator?: (s: string) => boolean;
+  autoComplete?: string;
+  'data-1p-ignore'?: boolean;
 };
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputReact>(
@@ -35,6 +37,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputReact>(
       inputMode,
       value,
       inputValidator = () => true,
+      autoComplete = 'off',
+      'data-1p-ignore': data1pIgnore = true,
     },
     ref,
   ) => {
@@ -71,6 +75,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputReact>(
         onBlur={onBlur}
         onChange={handleChange}
         disabled={disabled}
+        autoComplete={autoComplete}
+        data-1p-ignore={data1pIgnore}
       />
     );
   },
