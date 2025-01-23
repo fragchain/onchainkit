@@ -74,8 +74,6 @@ describe('useWalletAdvancedContext', () => {
       animations: {
         container: expect.any(String),
         content: expect.any(String),
-        mobileContainer: expect.any(String),
-        mobileContainerOverlay: expect.any(String),
       },
     });
   });
@@ -138,9 +136,6 @@ describe('useWalletAdvancedContext', () => {
       expect(result.current.animations).toEqual({
         container:
           'fade-out slide-out-to-top-1.5 animate-out fill-mode-forwards ease-in-out',
-        mobileContainer:
-          'fade-out slide-out-to-bottom-1/2 animate-out duration-200 fill-mode-forwards ease-in-out',
-        mobileContainerOverlay: 'fade-out animate-out duration-300 ease-in-out',
         content: '',
       });
     });
@@ -159,9 +154,6 @@ describe('useWalletAdvancedContext', () => {
       expect(result.current.animations).toEqual({
         container:
           'fade-out slide-out-to-bottom-1.5 animate-out fill-mode-forwards ease-in-out',
-        mobileContainer:
-          'fade-out slide-out-to-bottom-1/2 animate-out duration-200 fill-mode-forwards ease-in-out',
-        mobileContainerOverlay: 'fade-out animate-out duration-300 ease-in-out',
         content: '',
       });
     });
@@ -180,9 +172,6 @@ describe('useWalletAdvancedContext', () => {
       expect(result.current.animations).toEqual({
         container:
           'fade-in slide-in-from-top-1.5 animate-in duration-300 ease-out',
-        mobileContainer:
-          'fade-in slide-in-from-bottom-1/2 animate-in duration-300 ease-out',
-        mobileContainerOverlay: 'fade-in animate-in duration-300',
         content:
           'fade-in slide-in-from-top-2.5 animate-in fill-mode-forwards duration-300 ease-out',
       });
@@ -202,9 +191,6 @@ describe('useWalletAdvancedContext', () => {
       expect(result.current.animations).toEqual({
         container:
           'fade-in slide-in-from-bottom-1.5 animate-in duration-300 ease-out',
-        mobileContainer:
-          'fade-in slide-in-from-bottom-1/2 animate-in duration-300 ease-out',
-        mobileContainerOverlay: 'fade-in animate-in duration-300',
         content:
           'fade-in slide-in-from-bottom-2.5 animate-in fill-mode-forwards duration-300 ease-out',
       });
