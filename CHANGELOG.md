@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.36.9
+
+### Patch Changes
+
+- 4501399: **feat** add analytics by @0xAlec #1869
+- d7a5e68: - **feat**: Implement Popover, DismissableLayer, and FocusTrap primitives in SwapSettings. @cpcramer #1856
+- d23ad4c: - **chore**: Standardize comment format to JSDoc-style syntax' By @cpcramer #1869
+
 ## 0.36.8
 
 ### Patch Changes
