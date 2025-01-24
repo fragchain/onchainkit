@@ -1,3 +1,4 @@
+import { useBreakpoints } from '@/ui-react/internal/hooks/useBreakpoints';
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useOutsideClick } from '../../ui/react/internal/hooks/useOutsideClick';
@@ -13,6 +14,10 @@ vi.mock('../../core-react/internal/hooks/useTheme', () => ({
 
 vi.mock('../../ui/react/internal/hooks/useOutsideClick', () => ({
   useOutsideClick: vi.fn(),
+}));
+
+vi.mock('../../ui/react/internal/hooks/useBreakpoints', () => ({
+  useBreakpoints: vi.fn(),
 }));
 
 vi.mock('./ConnectWallet', () => ({
@@ -46,6 +51,20 @@ describe('Wallet Component', () => {
       handleClose: mockHandleClose,
       containerRef: { current: document.createElement('div') },
       connectRef: { current: document.createElement('div') },
+    });
+
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
     });
 
     vi.clearAllMocks();
@@ -178,6 +197,26 @@ describe('Wallet Component', () => {
       handleClose: mockHandleClose,
       containerRef: { current: document.createElement('div') },
     });
+
+    render(
+      <Wallet draggable={true}>
+        <ConnectWallet />
+        <WalletAdvanced>
+          <div>Wallet Advanced</div>
+        </WalletAdvanced>
+      </Wallet>,
+    );
+
+    expect(screen.getByTestId('ockDraggable')).toBeDefined();
+  });
+
+  it('should disable Draggable dragging when isConnectModalOpen or breakpoint is sm and isSubComponentOpen is true', () => {
+    (useWalletContext as ReturnType<typeof vi.fn>).mockReturnValue({
+      isSubComponentOpen: true,
+      handleClose: mockHandleClose,
+      containerRef: { current: document.createElement('div') },
+    });
+    (useBreakpoints as ReturnType<typeof vi.fn>).mockReturnValue('sm');
 
     render(
       <Wallet draggable={true}>
