@@ -1,10 +1,10 @@
 import { formatFiatAmount } from '@/internal/utils/formatFiatAmount';
+import { truncateDecimalPlaces } from '@/internal/utils/truncateDecimalPlaces';
 import { useCallback, useMemo } from 'react';
 import { useIcon } from '../../core-react/internal/hooks/useIcon';
 import { Skeleton } from '../../internal/components/Skeleton';
 import { cn, pressable, text } from '../../styles/theme';
 import type { FundCardAmountInputTypeSwitchPropsReact } from '../types';
-import { truncateDecimalPlaces } from '../utils/truncateDecimalPlaces';
 import { useFundContext } from './FundCardProvider';
 
 export const FundCardAmountInputTypeSwitch = ({
