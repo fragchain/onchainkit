@@ -5,6 +5,7 @@ import { useTheme } from '@/core-react/internal/hooks/useTheme';
 import { Draggable } from '@/internal/components/Draggable/Draggable';
 import { findComponent } from '@/internal/utils/findComponent';
 import { cn } from '@/styles/theme';
+import { useBreakpoints } from '@/ui-react/internal/hooks/useBreakpoints';
 import { useOutsideClick } from '@/ui-react/internal/hooks/useOutsideClick';
 import { Children, useMemo, useRef } from 'react';
 import type { WalletReact, WalletSubComponentReact } from '../types';
@@ -13,7 +14,6 @@ import { ConnectWallet } from './ConnectWallet';
 import { WalletAdvanced } from './WalletAdvanced';
 import { WalletDropdown } from './WalletDropdown';
 import { WalletProvider, useWalletContext } from './WalletProvider';
-import { useBreakpoints } from '@/ui-react/internal/hooks/useBreakpoints';
 
 export const Wallet = ({
   children,
